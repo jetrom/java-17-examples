@@ -2,4 +2,4 @@
 
 since Java 14/15
 
-[JEP 378: Text Blocks]((https://openjdk.java.net/jeps/378))
+[JEP 378: Text Blocks](https://openjdk.java.net/jeps/378)
