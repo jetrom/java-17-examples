@@ -58,7 +58,11 @@
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
-                         <compilerArgs>--enable-preview</compilerArgs>
+                        <compilerArgs>
+                            <arg>--enable-preview</arg>
+                        </compilerArgs>
+                        <showDeprecation>true</showDeprecation>
+                        <showWarnings>true</showWarnings>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -90,19 +94,19 @@
 
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
-        </plugins>
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <compilerArgs>-->
+<!--                        <arg>&#45;&#45;enable-preview</arg>-->
+<!--                    </compilerArgs>-->
+<!--                    <showDeprecation>true</showDeprecation>-->
+<!--                    <showWarnings>true</showWarnings>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
     </build>
 
 </project>
