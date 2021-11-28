@@ -9,25 +9,25 @@ import java.time.LocalDate;
  */
 public class ExampleNewTextBlockStrings {
 
-    String textLinesStringLiteral = "line1\n" +
+    public static final String textLinesStringLiteral = "line1\n" +
             "line2\n" +
             "line3\n" +
             "line4\n";
 
-    String textLinesNewTextBlock = """
+    public static final String textLinesNewTextBlock = """
               line1
               line2
               line3
               line4
               """;
 
-    String htmlStringLiteral = "<html>\n" +
+    public  static final String htmlStringLiteral = "<html>\n" +
             "    <body>\n" +
             "        <p>Hello, world</p>\n" +
             "    </body>\n" +
             "</html>\n";
 
-    String htmlNewTextBlock = """
+    public static final String htmlNewTextBlock = """
               <html>
                   <body>
                       <p>Hello, world</p>
@@ -35,25 +35,29 @@ public class ExampleNewTextBlockStrings {
               </html>
               """;
 
-    String jsonStringLiteral = "{\n"  +
-            "    \"name\" : '\"Doe\",\n" +
+    public static final String jsonStringLiteral = "{\n" +
+            "    \"name\" : \"Doe\",\n" +
             "    \"firstname\" : \"John\",\n" +
-            "    \"comment\" : \"old style string literal\"\n" +
+            "    \"comment\" : \"json string\"\n" +
             "}\n";
 
-    String jsonTextBlock = """
+    public static final String jsonTextBlock = """
             {
                 "name" : "Doe",
                 "firstname" : "John",
-                "comment" : "new style text block"
+                "comment" : "json string"
             }
              """;
 
-    String textLinesNewTextBlockWithPlaceHolders = """
+    public static final String textLinesNewTextBlockWithPlaceHolders = """
               This is a block with placeholders
               hello %s
               at date: %tF
-              """.formatted("world", LocalDate.now());
+              """;
+
+    public static String getTextLinesNewTextBlockWithPlaceHolders(String name, LocalDate date) {
+        return textLinesNewTextBlockWithPlaceHolders.formatted(name, date);
+    }
 
 
 
