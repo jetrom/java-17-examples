@@ -5,7 +5,5 @@ public class WrapperClassesNoWarnings {
     public static void run() {
         Double number = Double.valueOf(20.1);
         System.out.println("Number = " + number);
-            
-
     }
 }

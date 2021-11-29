@@ -7,7 +7,6 @@ package de.jetrom.app.java17.valuebasedclasses;
 public class WrapperClassesWithWarnings {
 
     public static void run() {
-
         // Constructor deprecated warning
         Double number = new Double(20.1);
         System.out.println("Number = " + number);
@@ -16,6 +15,5 @@ public class WrapperClassesWithWarnings {
         synchronized (number) {
             System.out.println("Synchronized Block on Instance of Number = " + number);
         }
-
     }
 }
