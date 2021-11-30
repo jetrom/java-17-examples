@@ -2,9 +2,11 @@ name: GitHub Java CI with Maven
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: 
+      - main 
   pull_request:
-    branches: [ $default-branch ]
+    branches: 
+      - main
   watch:
     types: [ started ]
 
