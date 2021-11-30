@@ -4,9 +4,9 @@
 
 ## Summary
 
-This repo contains examples of the important new Java 17 features.  
+This repository contains examples of the important new Java 17 features.  
 The focus is on the features and JEPs  which are important for a development perspective.  
-JEPs concerning deprecation or still in the incubation or internal for platform changes are not considered, except for pattern matching for switch and the value-bases classes warning.
+JEPs concerning deprecation issues or still in the incubation phase or internal for platform changes are not considered, except for the feature pattern matching for switch and the deprecation warning of value-bases classes.
 
 [Jdk 17 OpenKDK](https://openjdk.java.net/projects/jdk/17/)
 
