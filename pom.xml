@@ -13,7 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>17</maven.compiler.release>
         <junit.jupyter.version>5.8.2</junit.jupyter.version>
-        <junit.platform.surefire.provider>1.2.0</junit.platform.surefire.provider>
+        <junit.platform.surefire.provider.version>1.2.0</junit.platform.surefire.provider.version>
         <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
         <maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.surefire.provider}</version>
+            <version>${junit.platform.surefire.provider.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
