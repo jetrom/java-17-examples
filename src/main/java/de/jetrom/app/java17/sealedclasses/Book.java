@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * Exampples of sealed classes and Interfaces<br/>
- * Only the 4 Classes are allowed to implement this interface
+ * Only the 4 Classes are allowed to implement this abstract class
  *
  * @since JDK 16
  * @see <a href="https://openjdk.java.net/jeps/397">jeps/397</a>
