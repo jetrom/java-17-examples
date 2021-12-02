@@ -9,5 +9,5 @@ import java.time.LocalDate;
  *
  *
  */
-public record Person(String  name, String vorname, LocalDate gebDatum) {
+public record Person(String  name, String firstname, LocalDate birthday) {
 }
