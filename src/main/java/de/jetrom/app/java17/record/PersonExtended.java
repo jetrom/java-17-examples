@@ -34,8 +34,9 @@ public record PersonExtended(String  name, String firstname, LocalDate birthday,
         );
     }
 
-        public String cityUpperCase() {
-            return city.toUpperCase();
-        }
+    public String cityUpperCase() {
+        return city.toUpperCase();
+    }
+
 
 }
