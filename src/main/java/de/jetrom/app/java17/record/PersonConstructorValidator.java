@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- * Validator for Person record classes
+ * Validator for Person record classes with explicit constructors for validation
  */
 final class PersonConstructorValidator {
     static final String EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS = "The following parameters are not valid: %s";
