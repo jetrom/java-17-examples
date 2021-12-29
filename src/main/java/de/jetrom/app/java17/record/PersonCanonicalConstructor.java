@@ -1,9 +1,6 @@
 package de.jetrom.app.java17.record;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 import static de.jetrom.app.java17.record.PersonConstructorValidator.*;
 
