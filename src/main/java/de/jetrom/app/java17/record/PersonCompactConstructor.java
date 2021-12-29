@@ -16,9 +16,11 @@ public record PersonCompactConstructor(String  name, String firstname, LocalDate
 
     // Compact constructor for validation of the arguments requires less code
     public PersonCompactConstructor {
-        validate(name, "name", isNotNull, isNotBlank, startWithUpperCase);
-        validate(firstname, "firstname", isNotNull, isNotBlank, startWithUpperCase);
-        validate(birthday, "birthday", isNotNull, isValidBirthday);
+        checkInvalidParameterResults(
+        validate(name, "name", isNotNull, isNotBlank, startWithUpperCase),
+        validate(firstname, "firstname", isNotNull, isNotBlank, startWithUpperCase),
+        validate(birthday, "birthday", isNotNull, isValidBirthday)
+        );
     }
 
 

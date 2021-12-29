@@ -18,14 +18,14 @@ import static de.jetrom.app.java17.record.PersonConstructorValidator.*;
 public record PersonCanonicalConstructor(String  name, String firstname, LocalDate birthday) {
     // here is the canonical constructor with the same parameter for validation
     public PersonCanonicalConstructor( String name, String firstname, LocalDate birthday) {
-
-        validate(name, "name", isNotNull, isNotBlank, startWithUpperCase);
+        checkInvalidParameterResults(
+            validate(name, "name", isNotNull, isNotBlank, startWithUpperCase),
+            validate(firstname, "firstname", isNotNull, isNotBlank, startWithUpperCase),
+            validate(birthday, "birthday", isNotNull, isValidBirthday)
+        );
+        // assignment needed
         this.name = name;
-
-        validate(firstname, "firstname", isNotNull, isNotBlank, startWithUpperCase);
         this.firstname = firstname;
-
-        validate(birthday, "birthday", isNotNull, isValidBirthday);
         this.birthday = birthday;
     }
 

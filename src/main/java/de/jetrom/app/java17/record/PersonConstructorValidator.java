@@ -2,22 +2,41 @@ package de.jetrom.app.java17.record;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Validator for Person record classes
  */
 final class PersonConstructorValidator {
-    public static final String EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER = "The parameter %s with value: %s is not valid!";
+    static final String EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS = "The following parameters are not valid: %s";
 
     private PersonConstructorValidator() {}
 
     @SafeVarargs
-    static <T> void validate(final T param, final String paramName, Predicate<Object> checkNullObject, Predicate<T>... additionalChecks) {
-        if (Boolean.FALSE.equals(checkNullObject.test(param)
-                && Arrays.stream(additionalChecks).allMatch(check -> check.test(param)))) {
-            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER, paramName, Objects.toString(param, "null")));
+    static <T> Optional<InvalidParameterResult> validate(final T param, final String paramName, Predicate<Object> checkNotNullObject, Predicate<T>... additionalChecks) {
+        if (Boolean.FALSE.equals(checkNotNullObject.test(param))) {
+            return Optional.of(new InvalidParameterResult(paramName, null));
+        }
+        if (Arrays.stream(additionalChecks).anyMatch(check -> !check.test(param))) {
+            return Optional.of(new InvalidParameterResult(paramName, param.toString()));
+        }
+        return Optional.empty();
+    }
+
+    @SafeVarargs
+    static void checkInvalidParameterResults(Optional<InvalidParameterResult>... optionalInvalidResults) {
+        if (Arrays.stream(optionalInvalidResults).anyMatch(Optional::isPresent)) {
+            Function<InvalidParameterResult, String> createCompactInvalidParameterResult = e -> e.parameter() + "=" + e.value() ;
+            String result = Arrays.stream(optionalInvalidResults).filter(Optional::isPresent).map(Optional::get).map(createCompactInvalidParameterResult).collect(Collectors.joining(","));
+            throw new IllegalArgumentException(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS, result));
         }
     }
 

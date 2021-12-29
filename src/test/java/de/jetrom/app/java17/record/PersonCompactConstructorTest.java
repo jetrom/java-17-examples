@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static de.jetrom.app.java17.record.PersonConstructorValidator.EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static de.jetrom.app.java17.record.PersonConstructorValidator.EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PersonCompactConstructorTest {
 
@@ -24,13 +24,24 @@ class PersonCompactConstructorTest {
     }
 
     @Test
-    public void createRecordPersonWithInvalidArguments() {
+    public void createRecordPersonWithInvalidArgumentBirthday() {
         LocalDate illegalBirthday =  LocalDate.now().plusDays(1);
 
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () ->
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
             new PersonCompactConstructor(NAME, FIRSTNAME, illegalBirthday));
 
-        Assertions.assertEquals(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER, "birthday", illegalBirthday), exception.getMessage());
+        assertTrue(exception.getMessage().contains(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS, "birthday=" + illegalBirthday)));
+    }
+
+    @Test
+    public void createRecordPersonWithInvalidArgumentsNameBirthday() {
+        LocalDate illegalBirthday =  LocalDate.now().plusDays(1);
+        String illegalName = NAME.toLowerCase();
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+            new PersonCompactConstructor(illegalName, FIRSTNAME, illegalBirthday));
+
+        assertTrue(exception.getMessage().contains(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS, "name="+ illegalName + ",birthday=" + illegalBirthday)));
     }
 
 }

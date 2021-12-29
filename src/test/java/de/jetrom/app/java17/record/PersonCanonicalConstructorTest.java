@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
-import static de.jetrom.app.java17.record.PersonConstructorValidator.EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER;
-import static org.junit.jupiter.api.Assertions.*;
+import static de.jetrom.app.java17.record.PersonConstructorValidator.EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PersonCanonicalConstructorTest {
 
@@ -25,11 +25,11 @@ class PersonCanonicalConstructorTest {
     }
 
     @Test
-    public void createRecordPersonWithInvalidArguments() {
+    public void createRecordPersonWithInvalidArgumentFirstname() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () ->
                 new PersonCanonicalConstructor(NAME, "", BIRTHDAY));
 
-        Assertions.assertEquals(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETER, "firstname", ""), exception.getMessage());
+        assertTrue(exception.getMessage().contains(String.format(EXCEPTION_MESSAGE_FOR_INVALID_PARAMETERS, "firstname=")));
     }
 
 }
