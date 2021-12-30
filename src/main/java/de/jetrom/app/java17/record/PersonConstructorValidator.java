@@ -27,6 +27,11 @@ final class PersonConstructorValidator {
         return Optional.empty();
     }
 
+    /**
+     * checks the results of the validations for InvalidParameterResults
+     * @param optionalInvalidResults list of invalid results
+     * @throws  IllegalArgumentException if a value of a parameter is not valid
+     */
     @SafeVarargs
     static void checkInvalidParameterResults(Optional<InvalidParameterResult>... optionalInvalidResults) {
         if (Arrays.stream(optionalInvalidResults).anyMatch(Optional::isPresent)) {
